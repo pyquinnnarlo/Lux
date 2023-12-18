@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <!-- Add any additional styles or meta tags as needed -->
+</head>
+<body>
+    <h1>Upload File</h1>
+
+    <form method="post" action="{% url 'upload_file' repository.id selected_branch.name %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ file_form.as_p }}
+        <button type="submit">Upload File</button>
+    </form>
+
+    <!-- Add any additional content or elements as needed -->
+
+    <a href="{% url 'repository_detail' repository.id selected_branch.name %}">Back to Repository Detail</a>
+</body>
+</html>

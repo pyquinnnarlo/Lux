@@ -1,0 +1,21 @@
+<!-- github_app/templates/repository_files.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ repository.name }} - Files</title>
+</head>
+<body>
+    <h1>{{ repository.name }} - Files</h1>
+    {% if files %}
+        <ul>
+            {% for file in files %}
+                <li><a href="{{ file.file.url }}" target="_blank">{{ file.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No files found in the repository.</p>
+    {% endif %}
+</body>
+</html>

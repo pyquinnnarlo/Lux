@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Repository</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #00214d; /* Bitbucket header color */
+            padding: 10px;
+        }
+
+        h1 {
+            color: #24292e;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #24292e;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        input[type="checkbox"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #0366d6;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Include this in your template where appropriate */
+        footer {
+            background-color: #00214d; /* Bitbucket header color */
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Add any header content if needed -->
+    </header>
+
+    <h1>Create a New Repository</h1>
+
+    <form method="post" action="{% url 'create_repository' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Repository Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="private">Private:</label>
+        <input type="checkbox" id="private" name="private">
+
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file">
+
+        <button type="submit">Create Repository</button>
+    </form>
+
+    <!-- Include this in your template where appropriate -->
+    <footer>
+        <!-- Add any footer content if needed -->
+    </footer>
+</body>
+</html>
